@@ -1,5 +1,5 @@
 const CACHE_NAME = "table4-qa-v1";
-const SHELL_ASSETS = ["/", "/manifest.json", "/icons/icon-192.png", "/icons/icon-512.png"];
+const SHELL_ASSETS = ["/", "/manifest.json", "/icon-192.png", "/icon-512.png"];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(

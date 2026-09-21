@@ -1,0 +1,8 @@
+fastapi
+uvicorn[standard]
+voyageai
+supabase
+anthropic
+pydantic
+yt-dlp
+google-api-python-client

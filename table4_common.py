@@ -459,7 +459,13 @@ def ask_claude(claude_client, question: str, chunks: list[dict], model: str = CL
         max_tokens=1000,
         messages=[{"role": "user", "content": prompt}],
     )
-    return response.content[0].text
+    # response.content יכול לכלול גם בלוקים אחרים (כמו "thinking") לפני
+    # בלוק הטקסט בפועל - לא תמיד content[0] הוא הטקסט. מחפשים את בלוק
+    # הטקסט הראשון בפירוש במקום להניח שהוא הראשון ברשימה.
+    for block in response.content:
+        if getattr(block, "type", None) == "text":
+            return block.text
+    return ""
 
 
 def build_sources(chunks: list[dict]) -> list[dict]:
